@@ -46,6 +46,9 @@ class publicController extends Controller
         $contact->subject = $req->subject;
         $contact->message = $req->message;
         $contact->status = "Pending";
+
+        \Mail::to('zaman@zamsh.org')->send(new \App\Mail\MyTestMail($contact));
+
         $contact->save();
 
         return Redirect::back()->with('msg', 'Message has been sent successfully!');
