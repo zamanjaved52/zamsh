@@ -55,7 +55,7 @@ class aboutController extends Controller
         $about = about::where('created_by', '=', Auth::user()->id)->first();
 
         if ($about->image) {
-            $destination = 'storage/about_image/' . $about->image;
+            $destination = '/public/about_image/' . $about->image;
             if (file_exists(public_path($destination))) {
                 unlink($destination);
             }
